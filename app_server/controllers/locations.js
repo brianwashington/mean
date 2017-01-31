@@ -5,7 +5,7 @@ let apiOptions = {
 };
 
 if(process.env.NODE_ENV === 'production') {
-  apiOptions.server = ""; // put heroku url here
+  apiOptions.server = "https://tranquil-inlet-73744.herokuapp.com/";
 }
 
 let renderHomepage = function(req, res, responseBody) {
@@ -180,7 +180,7 @@ module.exports.doAddReview = function(req, res) {
         } else if(response.statusCode === 400 && body.name && body.name === "ValidationError") {
           res.redirect('/location/' + locationid + '/reviews/new?err=val')
         } else {
-          console.log(err);
+          console.log(body);
           _showError(req, res, response.statusCode);
         }
       }
