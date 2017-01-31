@@ -1,5 +1,14 @@
 mixin outputRating(rating)
-	- for(let i=0; i < rating; i++)
-		span.glyphicon.glyphicon-star
-	- for(let i=rating; i < 5; i++)
-		span.glyphicon.glyphicon-star-empty
+    - for(let i=0; i < rating; i++)
+        span.glyphicon.glyphicon-star
+    - for(let i=rating; i < 5; i++)
+        span.glyphicon.glyphicon-star-empty
+
+mixin formatDate(dateString)
+    -let date = new Date(dateString);
+    -let monthNames = [ "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December" ];
+    -let day = date.getDate();
+    -let month = monthNames[date.getMonth()];
+    -let year = date.getFullYear();
+    -let output = day + ' ' + month + ' ' + year;
+    =output
