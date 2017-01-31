@@ -5,7 +5,7 @@ let apiOptions = {
 };
 
 if(process.env.NODE_ENV === 'production') {
-  apiOptions.server = "https://tranquil-inlet-73744.herokuapp.com/";
+  apiOptions.server = "https://tranquil-inlet-73744.herokuapp.com";
 }
 
 let renderHomepage = function(req, res, responseBody) {
