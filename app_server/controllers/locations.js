@@ -8,56 +8,20 @@ if(process.env.NODE_ENV === 'production') {
   apiOptions.server = "https://tranquil-inlet-73744.herokuapp.com";
 }
 
-let renderHomepage = function(req, res, responseBody) {
-  let message;
-  
-  if(!(responseBody instanceof Array)) {
-    message = "API lookup error";
-    responseBody = [];
-  } else {
-    if(!responseBody.length) {
-      message = "No places found nearby";
-    }
-  }
+let renderHomepage = function(req, res) {
   res.render('locations-list', { 
     title: 'Loc8r - Find a place to work with Wifi',
     pageHeader: {
       title: 'Loc8r',
       strapline: 'Find places to work with Wifi near you!'
     },
-    sidebar: "Looking for Wifi and a seat? Loc8r helps you find places to work when out and about. Perhaps with coffee, cake, or a pint? Let Loc8r help you find the place you're looking for.",
-    locations: responseBody,
-    message: message
+    sidebar: "Looking for Wifi and a seat? Loc8r helps you find places to work when out and about. Perhaps with coffee, cake, or a pint? Let Loc8r help you find the place you're looking for."
   });
 };
 
 /* GET home page */
-module.exports.homelist  = function(req, res) {
-	let requestOptions, path;
-  path = '/api/locations';
-
-  requestOptions = {
-    url: apiOptions.server + path,
-    method: "GET",
-    json: {},
-    qs: {
-      lng: -0.7992599,
-      lat: 51.378091,
-      maxDistance: 20
-    }
-  };
-
-  request(requestOptions, 
-    function(err, response, body) {
-      let data = body;
-
-      if(response.statusCode === 200 && data.length) {
-        for(let i=0; i<data.length; i++) {
-          data[i].distance = _formatDistance(data[i].distance);
-        }
-      }
-      renderHomepage(req, res, data);
-  });
+module.exports.homelist = function(req, res) {
+  renderHomepage(req, res);
 };
 
 let _formatDistance = function(distance) {
@@ -109,7 +73,8 @@ let renderReviewForm = function(req, res, locDetail) {
   res.render('location-review-form', {
     title: 'Review ' + locDetail.name + ' on Loc8r',
     pageHeader: { title: 'Review ' + locDetail.name },
-    error: req.query.err
+    error: req.query.err,
+    url: req.orginialUrl
   });
 };
 

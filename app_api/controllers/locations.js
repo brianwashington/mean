@@ -23,7 +23,7 @@ let theEarth = (function() {
   };
 })();
 
-module.exports.locationsListByDistance = function(req, res) { 
+module.exports.locationsListByDistance = function(req, res) {
   let lng = parseFloat(req.query.lng);
   let lat = parseFloat(req.query.lat);
   let point = {

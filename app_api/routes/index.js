@@ -4,7 +4,7 @@ var router = express.Router();
 var ctrlLocations = require('../controllers/locations');
 var ctrlReviews = require('../controllers/reviews');
 
-router.get('/locations/', ctrlLocations.locationsListByDistance);
+router.get('/locations', ctrlLocations.locationsListByDistance);
 router.post('/locations', ctrlLocations.locationsCreate);
 router.get('/locations/:locationid', ctrlLocations.locationsReadOne);
 router.put('/locations/:locationid', ctrlLocations.locationsUpdateOne);
