@@ -7,7 +7,7 @@ return !isNaN(parseFloat(n)) && isFinite(n);
 };
 
 
-let formatDistance = function() {
+function formatDistance() {
   return function(distance) {
     let numDistance; 
     let unit = '';
@@ -25,4 +25,4 @@ let formatDistance = function() {
       return "?";
     }
   };
-};
+}

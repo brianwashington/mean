@@ -21,7 +21,7 @@ block content
 								a(href="/location/{{ location._id }}") {{ location.name }}
 								&nbsp;
 								small(rating-stars, rating="location.rating") 
-								span.badge.pull-right.badge-default {{ location.distance | _formatDistance}}
+								span.badge.pull-right.badge-default {{ location.distance | formatDistance}}
 							p.address {{ location.address }}
 							p
 								span.label.label-warning.label-facility(ng-repeat="facility in location.facilities")
