@@ -71,6 +71,7 @@ let ratingStars = function() {
 
 let loc8rData = function($http) {
   let locationByCoords = function(lat, lng) {
+    console.log('hi');
     return $http.get('/api/locations?lng=' + lng + '&lat=' + lat + '&maxDistance=20');  
   };
 

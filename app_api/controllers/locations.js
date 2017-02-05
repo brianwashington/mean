@@ -26,6 +26,9 @@ let theEarth = (function() {
 module.exports.locationsListByDistance = function(req, res) {
   let lng = parseFloat(req.query.lng);
   let lat = parseFloat(req.query.lat);
+
+  console.log(lng);
+  console.log(lat);
   let point = {
     type: "Point",
     coordinates: [lng, lat]
@@ -49,6 +52,7 @@ module.exports.locationsListByDistance = function(req, res) {
   Loc.geoNear(point, geoOptions, function(err, results, stats) {
     let locations = [];
     if(err) {
+      console.log(err);
       sendJsonResponse(res, 404, err);
     } else {
       results.forEach(function(doc) {
