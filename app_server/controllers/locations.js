@@ -145,7 +145,6 @@ module.exports.doAddReview = function(req, res) {
         } else if(response.statusCode === 400 && body.name && body.name === "ValidationError") {
           res.redirect('/location/' + locationid + '/reviews/new?err=val')
         } else {
-          console.log(body);
           _showError(req, res, response.statusCode);
         }
       }

@@ -34,7 +34,6 @@
         reviewText: formData.reviewText
       })
       .then((data) => {
-        console.log(data);
         vm.modal.close(data)
       }, (e) => {
         console.log(e);

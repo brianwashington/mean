@@ -33,7 +33,6 @@
         rating: formData.rating,
         reviewText: formData.reviewText
       }).then(function (data) {
-        console.log(data);
         vm.modal.close(data);
       }, function (e) {
         console.log(e);

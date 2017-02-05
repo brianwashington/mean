@@ -27,8 +27,6 @@ module.exports.locationsListByDistance = function(req, res) {
   let lng = parseFloat(req.query.lng);
   let lat = parseFloat(req.query.lat);
 
-  console.log(lng);
-  console.log(lat);
   let point = {
     type: "Point",
     coordinates: [lng, lat]

@@ -109,7 +109,7 @@ module.exports.reviewsReadOne = function(req, res) {
             return;
           }
           if (location.reviews && location.reviews.length > 0) {
-            console.log(location.reviews);
+            
             review = location.reviews.id(req.params.reviewid);
             if (!review) {
               sendJsonResponse(res, 404, {
