@@ -10,7 +10,7 @@ var fs = require('fs');
 
 var routes = require('./app_server/routes/index');
 var routesApi = require('./app_api/routes/index');
-var users = require('./app_server/routes/users');
+//var users = require('./app_server/routes/users');
 
 var app = express();
 
@@ -21,10 +21,17 @@ app.set('view engine', 'jade');
 var appClientFiles = [
 'transpiled/app.js',
 'transpiled/home/home.controller.js',
+'transpiled/about/about.controller.js',
+'transpiled/locationDetail/locationDetail.controller.js',
+'transpiled/reviewModal/reviewModal.controller.js',
 'transpiled/common/services/geolocation.service.js',
 'transpiled/common/services/loc8rData.service.js',
 'transpiled/common/filters/formatDistance.filter.js',
-'transpiled/common/directives/ratingStars/ratingStars.directive.js'
+'transpiled/common/filters/addHtmlLineBreaks.filter.js',
+'transpiled/common/directives/ratingStars/ratingStars.directive.js',
+'transpiled/common/directives/footerGeneric/footerGeneric.directive.js',
+'transpiled/common/directives/navigation/navigation.directive.js',
+'transpiled/common/directives/pageHeader/pageHeader.directive.js'
 ];
 
 var uglified = uglifyJs.minify(appClientFiles, { compress : false });
@@ -46,9 +53,13 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'app_client')));
 
-app.use('/', routes);
+//app.use('/', routes);
 app.use('/api', routesApi);
-app.use('/users', users);
+//app.use('/users', users);
+
+app.use(function(req, res) {
+  res.sendFile(path.join(__dirname, 'app_client', 'index.html'));
+});
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
