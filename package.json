@@ -3,7 +3,11 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node ./bin/www"
+    "start": "node ./bin/www",
+    "build": "babel ./app_client -d transpiled"
+  },
+  "babel": {
+    "presets": ["latest"]
   },
   "dependencies": {
     "body-parser": "~1.15.2",
@@ -14,6 +18,11 @@
     "mongoose": "^4.7.1",
     "morgan": "~1.7.0",
     "request": "^2.79.0",
-    "serve-favicon": "~2.3.0"
+    "serve-favicon": "~2.3.0",
+    "uglify-js": "^2.7.5"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.22.2",
+    "babel-preset-latest": "^6.22.0"
   }
 }
